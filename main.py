@@ -14,13 +14,23 @@ app.config['TESTING'] = True
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 
+### If product does not create product and price
+# stripe.Product.create(
+#     id="kalamansi",
+#     name="Calamansi (Philippine lime)",
+#     images=["https://www.justlovelylittlethings.com/wp-content/uploads/2019/05/315ED45D-CF90-4F3A-AA61-B263F027A41F.jpeg"],
+#     unit_label="lb",
+# )
 
-stripe.Product.create(
-    id="kalamansi",
-    name="Calamansi (Philippine lime)",
-    images=["https://www.justlovelylittlethings.com/wp-content/uploads/2019/05/315ED45D-CF90-4F3A-AA61-B263F027A41F.jpeg"],
-    unit_label="lb",
+stripe.Price.create(
+    currency="usd",
+    product="kalamansi",
+    unit_amount="150"
 )
+
+
+
+
 
 @app.route('/create-checkout-session', methods=['GET'])
 def create_checkout_session():
