@@ -32,7 +32,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 @app.route('/products', methods=['GET'])
 def show_all_products():
     products = stripe.Product.list()
-    return render_template('products.html', products=products)
+    return render_template('products.html', products=products.data)
 
 
 
