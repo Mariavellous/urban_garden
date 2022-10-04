@@ -22,12 +22,17 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 #     unit_label="lb",
 # )
 
-stripe.Price.create(
-    currency="usd",
-    product="kalamansi",
-    unit_amount="150"
-)
+# Create a price for kalamansi
+# stripe.Price.create(
+#     currency="usd",
+#     product="kalamansi",
+#     unit_amount="150"
+# )
 
+@app.route('/products', methods=['GET'])
+def show_all_products():
+    products = stripe.Product.list()
+    return render_template('products.html', products=products)
 
 
 
