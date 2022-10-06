@@ -38,16 +38,15 @@ def show_all_products():
 @app.route('/', methods=['GET'])
 def home():
     products = stripe.Product.list().data
+    list_products = {}
+    for item in products:
+        name = item.id
+        image = item.images[0]
+        list_products[name] = image
+    return list_products
 
-    # how to get a dictionary of product and its price
-    prices = stripe.Price.list().data
-    list_prices = {}
-    for item in prices:
-        price = item.unit_amount / 100
-        # list_prices.append(price)
-        key = item.product
-        list_prices[key] = price
-    return list_prices
+
+
 
 
 
