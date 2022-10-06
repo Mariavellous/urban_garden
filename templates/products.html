@@ -7,9 +7,12 @@
 <body>
 {% for item in products %}
 <p>{{ item.name }}</p>
-<!--image = {{ item.images }}-->
 <img src={{ item.images[0]}} width="250" height="250">
-<!--<p>{{ item.price }}</p>-->
+{% endfor %}
+
+{% for item in prices %}
+<p> ${{item.unit_amount|int / 100}} </p>
 {% endfor %}
 </body>
 </html>
+

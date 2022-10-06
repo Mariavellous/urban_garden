@@ -32,8 +32,26 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 @app.route('/products', methods=['GET'])
 def show_all_products():
     products = stripe.Product.list()
-    return render_template('products.html', products=products.data)
+    prices = stripe.Price.list()
+    return render_template('products.html', products=products.data, prices=prices.data)
 
+@app.route('/', methods=['GET'])
+def home():
+    products = stripe.Product.list().data
+
+    # how to get a dictionary of product and its price
+    prices = stripe.Price.list().data
+    list_prices = {}
+    for item in prices:
+        price = item.unit_amount / 100
+        # list_prices.append(price)
+        key = item.product
+        list_prices[key] = price
+    return list_prices
+
+
+
+    # return render_template('products.html', prices=prices.data)
 
 
 
