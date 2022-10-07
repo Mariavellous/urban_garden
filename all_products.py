@@ -15,18 +15,26 @@ def get_prices():
         price = item.unit_amount / 100
         # list_prices.append(price)
         key = item.product
-        list_prices[key] = price
+        # list_prices[key] = price
+        list_prices[key] = {"price": price}
     return list_prices
+
+print(get_prices())
 
 # responsible for getting data from Products API
 def get_product_data():
     products = stripe.Product.list().data
     list_products = {}
     for item in products:
-        name = item.id
+        id = item.id
+        name = item.name
         image = item.images[0]
-        list_products[name] = image
+        list_products[id] = {"name": name,
+                             "image": image,
+                             }
     return list_products
+
+print(get_product_data())
 
 def get_all_products():
     prices = get_prices()
