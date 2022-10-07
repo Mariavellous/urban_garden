@@ -44,7 +44,7 @@ def get_all_products():
     all_products = {}
     for key in products:
         # TODO: make values as dictionary instead of list
-        all_products[key] = [prices[key], products[key]]
+        all_products[key] = [products[key], prices[key]]
     return all_products
 
 print(get_all_products())
