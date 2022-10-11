@@ -45,12 +45,11 @@ def home():
         list_products[name] = image
     return list_products
 
-@app.route('/product', methods=['GET'])
+@app.route('/products', methods=['GET'])
 def show_all_products():
     all_products = Product().get_all_products()
-    print(all_products)
-    return "Yes"
-    # return render_template('products.html', prices=prices.data)
+    # print(all_products)
+    return render_template('products.html', products=all_products)
 
 
 @app.route('/create-checkout-session', methods=['GET'])

@@ -5,14 +5,14 @@
   <title>All Products</title>
 </head>
 <body>
-{% for item in products %}
-<p>{{ item.name }}</p>
-<img src={{ item.images[0]}} width="250" height="250">
+<h1>All My Products </h1>
+{% for key in products %}
+<h1> {{products[key].name}} </h1>
+<img src={{ products[key].image}} width="250" height="250">
+<h3> ${{products[key].price}} per lb </h3>
+
 {% endfor %}
 
-{% for item in prices %}
-<p> ${{item.unit_amount|int / 100}} </p>
-{% endfor %}
 </body>
 </html>
 
