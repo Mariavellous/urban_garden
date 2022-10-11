@@ -1,6 +1,6 @@
 import os
 from flask import Flask, redirect, request, url_for, render_template
-
+from all_products import Product
 import stripe
 # This is test secret API key
 stripe.api_key = 'sk_test_51LnxGxLeJ6gUVN1HtAzkLzp60PvEXngfpuB65r4t8Sue90iidTFvmkRfajTxiJB2YFPlNquktcSBr0ue5LiC4wzX00lf1EVPJN'
@@ -29,11 +29,11 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 #     unit_amount="150"
 # )
 
-@app.route('/products', methods=['GET'])
-def show_all_products():
-    products = stripe.Product.list()
-    prices = stripe.Price.list()
-    return render_template('products.html', products=products.data, prices=prices.data)
+# @app.route('/products', methods=['GET'])
+# def show_all_products():
+#     products = stripe.Product.list()
+#     prices = stripe.Price.list()
+#     return render_template('products.html', products=products.data, prices=prices.data)
 
 @app.route('/', methods=['GET'])
 def home():
@@ -45,13 +45,12 @@ def home():
         list_products[name] = image
     return list_products
 
-
-
-
-
-
+@app.route('/product', methods=['GET'])
+def show_all_products():
+    all_products = Product().get_all_products()
+    print(all_products)
+    return "Yes"
     # return render_template('products.html', prices=prices.data)
-
 
 
 @app.route('/create-checkout-session', methods=['GET'])

@@ -2,6 +2,7 @@ import stripe
 # This is test secret API key
 stripe.api_key = 'sk_test_51LnxGxLeJ6gUVN1HtAzkLzp60PvEXngfpuB65r4t8Sue90iidTFvmkRfajTxiJB2YFPlNquktcSBr0ue5LiC4wzX00lf1EVPJN'
 
+# Responsible for returning all the products in the inventory and its prices
 class Product:
     def __init__(self):
         pass
@@ -42,7 +43,8 @@ class Product:
         products = self.get_product_data()
         all_products = {}
         for key in products:
-            all_products[key] = [products[key], prices[key]]
+            all_products[key] = products[key]
+            all_products[key].update(prices[key])
         return all_products
 
     #print(get_all_products())
