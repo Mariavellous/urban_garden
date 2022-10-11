@@ -48,7 +48,7 @@ def home():
 @app.route('/products', methods=['GET'])
 def show_all_products():
     all_products = Product().get_all_products()
-    # print(all_products)
+    print(all_products)
     return render_template('products.html', products=all_products)
 
 
@@ -61,7 +61,7 @@ def create_checkout_session():
             line_items=[
                 {
                     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    'price': 'price_1LnxNCLeJ6gUVN1HHI5Uj3dz',
+                    'price': 'price_1LoDIxLeJ6gUVN1H5wcvMEuS',
                     'quantity': 5,
                     'adjustable_quantity': {
                         'enabled': True,

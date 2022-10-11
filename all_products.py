@@ -12,11 +12,13 @@ class Product:
         prices = stripe.Price.list().data
         list_prices = {}
         for item in prices:
-            price = item.unit_amount / 100
-            # list_prices.append(price)
             key = item.product
-            # list_prices[key] = price
-            list_prices[key] = {"price": price}
+            price_id = item.id
+            price = item.unit_amount / 100
+            list_prices[key] = {"price": price,
+                                "price_id": price_id
+                                }
+
         return list_prices
 
     # print(get_prices())
