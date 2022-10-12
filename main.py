@@ -7,7 +7,6 @@ stripe.api_key = 'sk_test_51LnxGxLeJ6gUVN1HtAzkLzp60PvEXngfpuB65r4t8Sue90iidTFvm
 
 app = Flask(__name__)
 MY_DOMAIN = 'http://localhost:5009'
-
 app.config['ENV'] = 'development'
 app.config['DEBUG'] = True
 app.config['TESTING'] = True
@@ -37,13 +36,8 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 @app.route('/', methods=['GET'])
 def home():
-    products = stripe.Product.list().data
-    list_products = {}
-    for item in products:
-        name = item.id
-        image = item.images[0]
-        list_products[name] = image
-    return list_products
+    return "This is the homepage"
+
 
 @app.route('/products', methods=['GET'])
 def show_all_products():
@@ -51,6 +45,11 @@ def show_all_products():
     print(all_products)
     return render_template('products.html', products=all_products)
 
+@app.route('/cart', methods=['POST'])
+def add_to_cart():
+    # I have price_id here
+    print("hello, there")
+    return render_template('success.html')
 
 @app.route('/create-checkout-session', methods=['GET'])
 def create_checkout_session():
@@ -69,7 +68,6 @@ def create_checkout_session():
                         'maximum': 10,
                     },
                 },
-
             ],
             mode='payment',
             currency='usd',
