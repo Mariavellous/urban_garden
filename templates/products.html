@@ -12,7 +12,8 @@
 <h3> ${{products[key].price}} per lb </h3>
 <p> {{products[key].price_id}} </p>
 <form action="/cart" method="post">
-  <input type="number">
+  <input type="number" name="count" min="1" max="20">
+  <input type="hidden" name="price_id" value={{products[key].price_id}}>
   <input type="submit" value="Add to Cart">
 </form>
 

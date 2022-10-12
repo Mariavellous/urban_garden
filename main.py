@@ -1,5 +1,6 @@
 import os
 from flask import Flask, redirect, request, url_for, render_template
+from flask_wtf import FlaskForm
 from all_products import Product
 import stripe
 # This is test secret API key
@@ -44,11 +45,17 @@ def show_all_products():
     all_products = Product().get_all_products()
     print(all_products)
     return render_template('products.html', products=all_products)
+#
+# class AddCartForm(FlaskForm):
+#     submit= SubmitField()
 
 @app.route('/cart', methods=['POST'])
 def add_to_cart():
-    # I have price_id here
-    print("hello, there")
+# I have price_id here
+    data = request.form
+    count = int(data['count'])
+    price_id = data['price_id']
+    print(data)
     return render_template('success.html')
 
 @app.route('/create-checkout-session', methods=['GET'])
