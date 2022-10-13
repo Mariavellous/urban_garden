@@ -14,14 +14,6 @@ app.config['TESTING'] = True
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 
-### If product does not create product and price
-# stripe.Product.create(
-#     id="kalamansi",
-#     name="Calamansi (Philippine lime)",
-#     images=["https://www.justlovelylittlethings.com/wp-content/uploads/2019/05/315ED45D-CF90-4F3A-AA61-B263F027A41F.jpeg"],
-#     unit_label="lb",
-# )
-
 # Create a price for kalamansi
 # stripe.Price.create(
 #     currency="usd",
