@@ -29,11 +29,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 #     unit_amount="150"
 # )
 
-# @app.route('/products', methods=['GET'])
-# def show_all_products():
-#     products = stripe.Product.list()
-#     prices = stripe.Price.list()
-#     return render_template('products.html', products=products.data, prices=prices.data)
+
 
 @app.route('/', methods=['GET'])
 def home():
@@ -45,18 +41,26 @@ def show_all_products():
     all_products = Product().get_all_products()
     print(all_products)
     return render_template('products.html', products=all_products)
-#
-# class AddCartForm(FlaskForm):
-#     submit= SubmitField()
+
+
+def update_cart(data):
+    #update the cart
+    current_cart = []
+    # current_cart.append({"key": 3})
+    current_cart.append(data)
+    # print(current_cart)
+    return(current_cart)
 
 @app.route('/cart', methods=['POST'])
 def add_to_cart():
 # I have price_id here
     data = request.form
-    count = int(data['count'])
-    price_id = data['price_id']
-    print(data)
-    return render_template('success.html')
+    count = int(data['quantity'])
+    price_id = data['price']
+    # print(data)
+    updated_cart = update_cart(data)
+    print(updated_cart)
+    return redirect(url_for("show_all_products"))
 
 @app.route('/create-checkout-session', methods=['GET'])
 def create_checkout_session():
