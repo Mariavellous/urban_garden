@@ -1,3 +1,4 @@
+# Responsible for adding price on each product
 import stripe
 stripe.api_key = "sk_test_51LnxGxLeJ6gUVN1HtAzkLzp60PvEXngfpuB65r4t8Sue90iidTFvmkRfajTxiJB2YFPlNquktcSBr0ue5LiC4wzX00lf1EVPJN"
 

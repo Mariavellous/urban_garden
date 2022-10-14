@@ -14,15 +14,6 @@ app.config['TESTING'] = True
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 
-# Create a price for kalamansi
-# stripe.Price.create(
-#     currency="usd",
-#     product="kalamansi",
-#     unit_amount="150"
-# )
-
-
-
 @app.route('/', methods=['GET'])
 def home():
     return "This is the homepage"
@@ -45,7 +36,6 @@ def update_cart(data):
 
 @app.route('/cart', methods=['POST'])
 def add_to_cart():
-# I have price_id here
     data = request.form
     count = int(data['quantity'])
     price_id = data['price']

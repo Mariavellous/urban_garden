@@ -1,3 +1,4 @@
+# Responsible for adding fruits and vegetables on Stripe database including each product's name and images.
 import stripe
 stripe.api_key = "sk_test_51LnxGxLeJ6gUVN1HtAzkLzp60PvEXngfpuB65r4t8Sue90iidTFvmkRfajTxiJB2YFPlNquktcSBr0ue5LiC4wzX00lf1EVPJN"
 
